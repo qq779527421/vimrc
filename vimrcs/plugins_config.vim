@@ -80,11 +80,46 @@ set grepprg=/bin/grep\ -nH
 let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-let g:NERDTreeWinSize=35
+let g:NERDTreeWinSize=30
 nmap <F6> :NERDTreeToggle<cr>
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
 map <leader>nf :NERDTreeFind<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Tagbar 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tagbar_left=1
+let g:tagbar_width=30
+let g:tagbar_autofocus = 1
+let g:tagbar_sort = 0
+let g:tagbar_compact = 1
+" tag for coffee
+if executable('coffeetags')
+  let g:tagbar_type_coffee = {
+        \ 'ctagsbin' : 'coffeetags',
+        \ 'ctagsargs' : '',
+        \ 'kinds' : [
+        \ 'f:functions',
+        \ 'o:object',
+        \ ],
+        \ 'sro' : ".",
+        \ 'kind2scope' : {
+        \ 'f' : 'object',
+        \ 'o' : 'object',
+        \ }
+        \ }
+
+  let g:tagbar_type_markdown = {
+    \ 'ctagstype' : 'markdown',
+    \ 'sort' : 0,
+    \ 'kinds' : [
+        \ 'h:sections'
+    \ ]
+    \ }
+endif
+nmap <F5> :TagbarToggle<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
